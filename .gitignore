@@ -60,3 +60,8 @@ typings/
 android/app/build/
 yarn.lock
 android/.gradle/
+android/local.properties
+android/.idea/
+android/app/app.iml
+android/TaxiApp.iml
+android/build/
