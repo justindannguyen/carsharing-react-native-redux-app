@@ -10,16 +10,11 @@ export default class Home extends Component {
   }
 
   render() {
-    const region = {
-      latitude: 10.801881,
-      longitude: 106.639711,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.02421
-    }
     return (
       <Container>
-        <MapContainer region={region}>
-        </MapContainer>
+        {this.props.region ?
+          <MapContainer region={this.props.region} />
+          : <Text>Getting your current location...</Text>}
       </Container>
     )
   }
