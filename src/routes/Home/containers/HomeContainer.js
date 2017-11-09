@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 import Home from '../components/Home'
-import { setName } from '../modules/home'
+import { getCurrentLocation } from '../modules/home'
 
 const mapStateToProps = (state) => ({
-  name: state.home.name
+  region: state.home.region
 })
 
 const mapDispatchToProps = {
-  setName
+  getCurrentLocation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
