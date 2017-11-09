@@ -35,5 +35,6 @@ export default (initialState = {}) => {
 			...enhancers
 		)
 	)
+
 	return store
 }
