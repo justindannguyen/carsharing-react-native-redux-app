@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Provider } from "react-redux"
+import { Router } from 'react-native-router-flux'
 import createStore from './store/createStore'
-import AppContainer from './AppContainer'
+import scenes from './routes/scenes'
 
-export default class Root extends Component {
+export default class AppRoot extends Component {
   constructor(props) {
     super(props)
 
@@ -17,7 +19,9 @@ export default class Root extends Component {
     const { store } = this.state
 
     return (
-      <AppContainer store={store} />
+      <Provider store={store}>
+        <Router scenes={scenes} />
+      </Provider>
     )
   }
 
