@@ -1,13 +1,21 @@
 import { connect } from 'react-redux'
 import Home from '../components/Home'
-import { getCurrentLocation } from '../modules/home'
+import {
+  getCurrentLocation,
+  setPickupLocationAction,
+  setDropLocationAction
+} from '../modules/HomeActions'
 
-const mapStateToProps = (state) => ({
-  region: state.home.region
+const mapStateToProps = ({ home }) => ({
+  region: home.region,
+  pickupLocation: home.pickupLocation,
+  dropoffLocation: home.dropoffLocation
 })
 
 const mapDispatchToProps = {
-  getCurrentLocation
+  getCurrentLocation,
+  setPickupLocation: location => setPickupLocationAction(location),
+  setDropLocation: location => setDropLocationAction(location)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

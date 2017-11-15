@@ -4,7 +4,8 @@ import MapView from 'react-native-maps'
 import styles from './styles'
 import { SearchBox } from '../SearchBox'
 
-export const MapContainer = ({ region }) => {
+export const MapContainer = (props) => {
+  const { region, setPickupLocation, pickupLocation, setDropLocation, dropoffLocation } = props
   return (
     <View style={styles.container}>
       <MapView provider={MapView.PROVIDER_GOOGLE}
@@ -13,7 +14,11 @@ export const MapContainer = ({ region }) => {
       >
         <MapView.Marker coordinate={region} pinColor='green' />
       </MapView>
-      <SearchBox />
+      <SearchBox setPickupLocation={setPickupLocation}
+        pickupLocation={pickupLocation}
+        setDropLocation={setDropLocation}
+        dropoffLocation={dropoffLocation}
+      />
     </View>
   )
 }

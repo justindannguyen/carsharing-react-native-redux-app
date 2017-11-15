@@ -13,7 +13,7 @@ export default class Home extends Component {
     return (
       <Container>
         {this.props.region ?
-          <MapContainer region={this.props.region} />
+          <MapContainer { ...this.props } />
           : <Text>Getting your current location...</Text>}
       </Container>
     )
@@ -22,6 +22,16 @@ export default class Home extends Component {
 
 Home.propTypes = {
   getCurrentLocation: PropTypes.func.isRequired,
+  setPickupLocation: PropTypes.func.isRequired,
+  pickupLocation: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
+  }),
+  setDropLocation: PropTypes.func.isRequired,
+  dropoffLocation: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
+  }),
   region: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
