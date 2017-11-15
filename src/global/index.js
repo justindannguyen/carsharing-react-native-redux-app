@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2017-present, Justin Nguyen.
+ * All rights reserved.
+ * 
+ * @author tuan3.nguyen@gmail.com
+ * 
+ * @flow
+ * @format
+ */
+'use strict'
+
 import { Toast } from 'native-base'
 
 function showToast(configs = {}) {
@@ -21,7 +32,7 @@ export function showSuccess(message) {
  * @param {string} message 
  */
 export function showWarning(message) {
-  showToast({ type: 'warning', text : message })
+  showToast({ type: 'warning', text: message })
 }
 
 /**

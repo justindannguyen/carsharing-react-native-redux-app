@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2017-present, Justin Nguyen.
+ * All rights reserved.
+ * 
+ * @author tuan3.nguyen@gmail.com
+ * 
+ * @flow
+ * @format
+ */
+'use strict'
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
@@ -12,9 +23,11 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
-        {this.props.region ?
-          <MapContainer { ...this.props } />
-          : <Text>Getting your current location...</Text>}
+        {this.props.region ? (
+          <MapContainer {...this.props} />
+        ) : (
+          <Text>Getting your current location...</Text>
+        )}
       </Container>
     )
   }

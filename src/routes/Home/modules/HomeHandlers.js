@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2017-present, Justin Nguyen.
+ * All rights reserved.
+ * 
+ * @author tuan3.nguyen@gmail.com
+ * 
+ * @flow
+ * @format
+ */
+'use strict'
+
 import update from 'immutability-helper'
 import { Dimensions } from 'react-native'
 import {
@@ -32,7 +43,7 @@ function handleSetCurrentLocation(state, action) {
   const position = action.payload
   if (position == null) return state
 
-  const { width, height } = Dimensions.get("window")
+  const { width, height } = Dimensions.get('window')
   const ratio = width / height
   const latitudeDelta = 0.0922
   const longitudeDelta = latitudeDelta * ratio

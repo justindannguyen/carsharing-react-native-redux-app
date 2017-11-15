@@ -1,9 +1,20 @@
-import { Dimensions } from "react-native";
-var width = Dimensions.get("window").width; //full width
+/**
+ * Copyright (c) 2017-present, Justin Nguyen.
+ * All rights reserved.
+ * 
+ * @author tuan3.nguyen@gmail.com
+ * 
+ * @flow
+ * @format
+ */
+'use strict'
+
+import { Dimensions } from 'react-native'
+var width = Dimensions.get('window').width //full width
 const styles = {
   searchBox: {
     top: 0,
-    position: "absolute",
+    position: 'absolute',
     width: width
   },
   inputWrapper: {
@@ -11,7 +22,7 @@ const styles = {
     marginRight: 10,
     marginTop: 10,
     marginBottom: 0,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     opacity: 0.9,
     borderRadius: 7
   },
@@ -19,7 +30,7 @@ const styles = {
     marginLeft: 15,
     marginRight: 10,
     marginTop: 0,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     opacity: 0.9,
     borderRadius: 7
   },
@@ -28,11 +39,11 @@ const styles = {
   },
   label: {
     fontSize: 10,
-    fontStyle: "italic",
+    fontStyle: 'italic',
     marginLeft: 10,
     marginTop: 10,
     marginBottom: 0
   }
-};
+}
 
 export default styles

@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2017-present, Justin Nguyen.
+ * All rights reserved.
+ * 
+ * @author tuan3.nguyen@gmail.com
+ * 
+ * @flow
+ * @format
+ */
+'use strict'
+
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 import { View, Input, InputGroup, Toast } from 'native-base'
@@ -29,13 +40,13 @@ export class SearchBox extends Component {
   }
 
   pickALocation(latLngBounds = {}, successCallback) {
-    latLngBounds.radius = .1
+    latLngBounds.radius = 0.1
     RNGooglePlaces.openPlacePickerModal(latLngBounds)
       .then(place => successCallback(place))
       .catch(error => showError(error.message))
   }
 
-  getLocationDisplayText = (location) => {
+  getLocationDisplayText = location => {
     return location
       ? location.name || location.address || `${location.latitude}-${location.longitude}`
       : ''
@@ -49,9 +60,10 @@ export class SearchBox extends Component {
         <View style={styles.inputWrapper}>
           <Text style={styles.label}>PICK UP</Text>
           <InputGroup>
-            <Icon name='search' size={15} color='green' />
-            <Input style={styles.inputSearch}
-              placeholder='Choose pick-up location'
+            <Icon name="search" size={15} color="green" />
+            <Input
+              style={styles.inputSearch}
+              placeholder="Choose pick-up location"
               value={pickupText}
               onFocus={this.choosePickupLocation}
             />
@@ -60,9 +72,10 @@ export class SearchBox extends Component {
         <View style={styles.inputWrapper}>
           <Text style={styles.label}>DROP OFF</Text>
           <InputGroup>
-            <Icon name='search' size={15} color='orange' />
-            <Input style={styles.inputSearch}
-              placeholder='Choose drop-off location'
+            <Icon name="search" size={15} color="orange" />
+            <Input
+              style={styles.inputSearch}
+              placeholder="Choose drop-off location"
               value={dropoffText}
               onFocus={this.chooseDropoffLocation}
             />
@@ -83,7 +96,7 @@ SearchBox.propTypes = {
   dropoffLocation: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
-  }),
+  })
 }
 
 export default SearchBox

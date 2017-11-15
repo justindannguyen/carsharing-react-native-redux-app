@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2017-present, Justin Nguyen.
+ * All rights reserved.
+ * 
+ * @author tuan3.nguyen@gmail.com
+ * 
+ * @flow
+ * @format
+ */
+'use strict'
+
 export const GET_USER_CURRENT_LOCATION = 'GET_USER_CURRENT_LOCATION'
 export const SET_PICK_UP_LOCATION = 'SET_PICK_UP_LOCATION'
 export const SET_DROP_OFF_LOCATION = 'SET_DROP_OFF_LOCATION'
