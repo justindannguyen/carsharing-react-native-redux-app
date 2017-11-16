@@ -8,6 +8,11 @@
 And he reads few comparision posts on internet about ionic vs react-native.
 But he wants to have his own feeling...
 
+## Screenshoot
+Latest work as of now.
+
+![](screenshoot.jpeg "Latest work of Taxi App")
+
 ## Libraries
 Beside  ```react``` and ```react-native``` library, below are additional ones & their purposes
 + [Redux](https://redux.js.org/): Typical state container (storages) for your react application.
@@ -48,4 +53,3 @@ Steps guideline from [eman1000/TaxiApp](https://github.com/eman1000/TaxiApp)
 ## TODO list
 + Place picker will be shown when When pickup (or dropoff) text box are firing focus event. Hence, dropoff picker will not display again when text box is in focus state and you want to change the place. Workaround is un-focus the text box first.
 + Customize the place picker of ```react-native-google-places``` to align with themes
-
