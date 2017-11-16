@@ -14,6 +14,7 @@ import PropTypes from "prop-types"
 import { Text } from "react-native"
 import MapContainer from "./MapContainer"
 import { Container } from "native-base"
+import AppFooter from "../../../global/Template/containers/AppFooterContainer"
 
 export default class Home extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ export default class Home extends Component {
     return (
       <Container>
         <MapContainer {...this.props} />
+        <AppFooter />
       </Container>
     )
   }

@@ -10,7 +10,7 @@
 "use strict"
 
 import React from "react"
-import { View } from "react-native"
+import { Container, Content } from "native-base"
 import MapView from "react-native-maps"
 import styles from "./styles"
 import { SearchBox } from "../SearchBox"
@@ -18,8 +18,8 @@ import { SearchBox } from "../SearchBox"
 export const MapContainer = props => {
   const { region, setPickupLocation, pickupLocation, setDropLocation, dropoffLocation } = props
   return (
-    <View style={styles.container}>
-      <MapView provider={MapView.PROVIDER_GOOGLE} style={styles.map} region={region}>
+    <Content contentContainerStyle={styles.container}>
+      <MapView provider={MapView.PROVIDER_GOOGLE} region={region} style={styles.map}>
         <MapView.Marker coordinate={region} pinColor="orangered" />
       </MapView>
       <SearchBox
@@ -28,7 +28,7 @@ export const MapContainer = props => {
         setDropLocation={setDropLocation}
         dropoffLocation={dropoffLocation}
       />
-    </View>
+    </Content>
   )
 }
 

@@ -10,11 +10,12 @@
 "use strict"
 
 import { Dimensions } from "react-native"
+import { StyleSheet } from "react-native"
+
 var width = Dimensions.get("window").width //full width
 const styles = {
   searchBox: {
-    top: 0,
-    position: "absolute",
+    ...StyleSheet.absoluteFillObject,
     width: width
   },
   inputWrapper: {

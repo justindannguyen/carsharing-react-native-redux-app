@@ -21,8 +21,8 @@ const styles = {
     fontSize: 20
   },
   headerText: {
-    color: "#fff"
-    //fontSize: 14
+    color: "#fff",
+    fontSize: 14
   }
 }
 export default class AppHeader extends Component {

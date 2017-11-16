@@ -1,11 +1,11 @@
 # Carsharing application using react-native and redux.
 ## About
-Justin are from Java background and he also know little bit about:
+[Justin](https://github.com/justindannguyen) are from Java background and he also knows little bit about:
 + Dev native app with android.
 + Dev single page webapp with reactjs or angular 4.
 + Dev hybrid app with ionic + cordova native plugin.
 
-And he read few comparision posts on internet about ionic vs react-native.
+And he reads few comparision posts on internet about ionic vs react-native.
 But he wants to have his own feeling...
 
 ## Libraries
@@ -28,20 +28,24 @@ Steps guideline from [eman1000/TaxiApp](https://github.com/eman1000/TaxiApp)
 ### General
 + [Prettier](https://prettier.io/) integrated for code formatter.
 + [Flow](https://flow.org/) integrated for static type checker.
-+ Android implementation instead of iOS, so I could use ```react-native link``` without any problems as mentioned in original guideline.
++ Android implementation instead of iOS, so I could use ```react-native link``` without any problems which have been highlighted in original guideline.
 + Upgrade all libraries to latest version, including the drop of deprecated library e.g. ```react-addons-update``` and replace by ```immutability-helper```
++ Apply props type validation from reactjs best practices.
 
 ### Structure
 + No AppContainer: App container are merged together with [AppRoot](src/index.js) component
 + Modules folder: It will contain 3 files: module file, **actions file**, **handlers file**, there is no **constants files**. Refer [Home](src/routes/Home/modules/) module.
 + App Bar: Instead of hide the navigation bar (using ```hiddenNavBar```) and create new custom Header component in Home, ```react-native-router-flux``` navigation bar itself is customized by using ```navBar```. Refer [Scenes](src/routes/scenes.js)
 + Header: Use of ```Subtitle``` in Header along with ```Title``` 
++ I got problems when using redux store with hot reload feature because store will be created everytimes application is hot-reloaded. Store is now created in constructor instead of ```render```, refer [AppRoot](src/index.js)
 
 ### Logic
 + Place picker: ```openPlacePickerModal``` is being used as built-in picker instead of our own UI + ```getAutocompletePredictions```. This lead to huge differences in actions & handlers of home component, refer [HomeActions.js](src/routes/Home/modules/HomeActions.js)
-  + ```RNGooglePlaces``` API is called from react native component instead of module layer,  refer [SearchBox][src/routes/Home/components/SearchBox/index.js]
+  + ```RNGooglePlaces``` API is called from react native component instead of module layer,  refer [SearchBox](src/routes/Home/components/SearchBox/index.js)
++ Taxi types e.g. Premium, Share, Car, Bike can be selectable, refer [Footer](src/global/Template/components/AppFooter.js)
++ Use ```native-base``` layout e.g. Header, Content, Footer combination.
 
 ## TODO list
-+ Place picker will show when When pickup (or dropoff) text box are in focus event. Hence, dropoff picker will not display again when text box is being focus and you want to change the place. Workaround is un-focus first.
++ Place picker will be shown when When pickup (or dropoff) text box are firing focus event. Hence, dropoff picker will not display again when text box is in focus state and you want to change the place. Workaround is un-focus the text box first.
 + Customize the place picker of ```react-native-google-places``` to align with themes
 
