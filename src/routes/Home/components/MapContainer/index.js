@@ -7,20 +7,20 @@
  * @flow
  * @format
  */
-'use strict'
+"use strict"
 
-import React from 'react'
-import { View } from 'react-native'
-import MapView from 'react-native-maps'
-import styles from './styles'
-import { SearchBox } from '../SearchBox'
+import React from "react"
+import { View } from "react-native"
+import MapView from "react-native-maps"
+import styles from "./styles"
+import { SearchBox } from "../SearchBox"
 
 export const MapContainer = props => {
   const { region, setPickupLocation, pickupLocation, setDropLocation, dropoffLocation } = props
   return (
     <View style={styles.container}>
       <MapView provider={MapView.PROVIDER_GOOGLE} style={styles.map} region={region}>
-        <MapView.Marker coordinate={region} pinColor="green" />
+        <MapView.Marker coordinate={region} pinColor="orangered" />
       </MapView>
       <SearchBox
         setPickupLocation={setPickupLocation}

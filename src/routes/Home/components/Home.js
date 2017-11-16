@@ -7,29 +7,37 @@
  * @flow
  * @format
  */
-'use strict'
+"use strict"
 
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { View, Text } from 'react-native'
-import MapContainer from './MapContainer'
-import { Container } from 'native-base'
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { Text } from "react-native"
+import MapContainer from "./MapContainer"
+import { Container } from "native-base"
 
 export default class Home extends Component {
   componentDidMount() {
     this.props.getCurrentLocation()
   }
 
-  render() {
+  renderHome() {
     return (
       <Container>
-        {this.props.region ? (
-          <MapContainer {...this.props} />
-        ) : (
-          <Text>Getting your current location...</Text>
-        )}
+        <MapContainer {...this.props} />
       </Container>
     )
+  }
+
+  renderLoading() {
+    return (
+      <Container>
+        <Text>Getting your current location...</Text>
+      </Container>
+    )
+  }
+
+  render() {
+    return this.props.region ? this.renderHome() : this.renderLoading()
   }
 }
 
