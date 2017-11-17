@@ -11,11 +11,7 @@
 
 import { connect } from "react-redux"
 import Home from "../components/Home"
-import {
-  getCurrentLocation,
-  setPickupLocationAction,
-  setDropLocationAction
-} from "../modules/HomeActions"
+import { getCurrentLocation, setPickupLocation, setDropLocation } from "../modules/HomeActions"
 
 const mapStateToProps = ({ home }) => ({
   mapRegion: home.mapRegion,
@@ -25,8 +21,8 @@ const mapStateToProps = ({ home }) => ({
 
 const mapDispatchToProps = {
   getCurrentLocation,
-  setPickupLocation: location => setPickupLocationAction(location),
-  setDropLocation: location => setDropLocationAction(location)
+  setPickupLocation,
+  setDropLocation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

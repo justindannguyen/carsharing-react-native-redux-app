@@ -10,12 +10,13 @@
 "use strict"
 
 import update from "immutability-helper"
-import { SET_PICK_UP_LOCATION, SET_DROP_OFF_LOCATION } from "./HomeActions"
+import { SET_PICK_UP_LOCATION, SET_DROP_OFF_LOCATION, SET_FARE_STRUCTURE } from "./HomeActions"
 import { getRegionFromCoordinates } from "../../../global"
 
 export const actionHandlers = {
   SET_PICK_UP_LOCATION: handleSetPickupLocation,
-  SET_DROP_OFF_LOCATION: handleSetDropLocation
+  SET_DROP_OFF_LOCATION: handleSetDropLocation,
+  SET_FARE_STRUCTURE: handleSetFareStructure
 }
 
 function handleSetPickupLocation(state, action) {
@@ -40,6 +41,14 @@ function handleSetDropLocation(state, action) {
     },
     mapRegion: {
       $set: getRegionFromCoordinates([pickupLocation, dropoffLocation])
+    }
+  })
+}
+
+function handleSetFareStructure(state, action) {
+  return update(state, {
+    fareStructure: {
+      $set: action.payload
     }
   })
 }

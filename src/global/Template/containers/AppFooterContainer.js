@@ -14,7 +14,8 @@ import AppFooter from "../components/AppFooter"
 import { setSelectedTaxiTypeAction } from "../modules/TemplateActions"
 
 const mapStateToProps = state => ({
-  selectedTaxiType: state.template.selectedTaxiType
+  selectedTaxiType: state.template.selectedTaxiType,
+  fareStructure: state.home.fareStructure
 })
 
 const mapDispatchToProps = {

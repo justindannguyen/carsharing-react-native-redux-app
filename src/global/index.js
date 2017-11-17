@@ -63,6 +63,18 @@ export function isLocationEquals(mapLocation1, mapLocation2) {
   )
 }
 
+export function isFareStructureEquals(fare1, fare2) {
+  if (fare1 == fare2) {
+    return true
+  }
+  if (fare1 == null || fare2 == null) {
+    return false
+  }
+  return (
+    fare1.distance.value == fare2.distance.value && fare1.duration.value == fare2.duration.value
+  )
+}
+
 export function getRegionFromCoordinates(points) {
   let minLat, maxLat, minLng, maxLng
 

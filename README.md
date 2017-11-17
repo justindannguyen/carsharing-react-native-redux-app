@@ -9,10 +9,11 @@ And he reads few comparision posts on internet about ionic vs react-native.
 But he wants to have his own feeling...
 
 ## Screenshoot
-Latest work as of now.
+Latest work as of now (Part 8).
 
 ![](docs/load_page.jpeg "Latest work of Taxi App")
-![](docs/home_page.jpeg "Latest work of Taxi App")
+![](docs/home_page_default.jpeg "Latest work of Taxi App")
+![](docs/home_page_fare.jpeg "Latest work of Taxi App")
 
 ## Libraries
 Beside  ```react``` and ```react-native``` library, below are additional ones & their purposes
@@ -44,12 +45,16 @@ Steps guideline from [eman1000/TaxiApp](https://github.com/eman1000/TaxiApp)
 + App Bar: Instead of hide the navigation bar (using ```hiddenNavBar```) and create new custom Header component in Home, ```react-native-router-flux``` navigation bar itself is customized by using ```navBar```. Refer [Scenes](src/routes/scenes.js)
 + Header: Use of ```Subtitle``` in Header along with ```Title``` 
 + I got problems when using redux store with hot reload feature because store will be created everytimes application is hot-reloaded. Store is now created in constructor instead of ```render```, refer [AppRoot](src/index.js)
++ Fares are calculated and displayed at Footer.
++ Welcome screen and display loading indicator when load user current information.
 
 ### Logic
 + Place picker: ```openPlacePickerModal``` is being used as built-in picker instead of our own UI + ```getAutocompletePredictions```. This lead to huge differences in actions & handlers of home component, refer [HomeActions.js](src/routes/Home/modules/HomeActions.js)
   + ```RNGooglePlaces``` API is called from react native component instead of module layer,  refer [SearchBox](src/routes/Home/components/SearchBox/index.js)
 + Taxi types e.g. Premium, Share, Car, Bike can be selectable, refer [Footer](src/global/Template/components/AppFooter.js)
 + Use ```native-base``` layout e.g. Header, Content, Footer combination.
++ Initial, current location will be used as pickup location.
++ Fare calculation formula & display for all Taxi 
 
 ## TODO list
 + Place picker will be shown when When pickup (or dropoff) text box are firing focus event. Hence, dropoff picker will not display again when text box is in focus state and you want to change the place. Workaround is un-focus the text box first.
