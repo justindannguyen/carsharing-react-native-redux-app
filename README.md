@@ -11,7 +11,8 @@ But he wants to have his own feeling...
 ## Screenshoot
 Latest work as of now.
 
-![](screenshoot.jpeg "Latest work of Taxi App")
+![](docs/load_page.jpeg "Latest work of Taxi App")
+![](docs/home_page.jpeg "Latest work of Taxi App")
 
 ## Libraries
 Beside  ```react``` and ```react-native``` library, below are additional ones & their purposes

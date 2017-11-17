@@ -15,6 +15,7 @@ import { Text } from "react-native"
 import MapContainer from "./MapContainer"
 import { Container } from "native-base"
 import AppFooter from "../../../global/Template/containers/AppFooterContainer"
+import LoadingIndicator from "./LoadingIndicator"
 
 export default class Home extends Component {
   componentDidMount() {
@@ -31,11 +32,7 @@ export default class Home extends Component {
   }
 
   renderLoading() {
-    return (
-      <Container>
-        <Text>Getting your current location...</Text>
-      </Container>
-    )
+    return <LoadingIndicator />
   }
 
   render() {

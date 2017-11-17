@@ -16,7 +16,8 @@ const appLogo = require("../../../assets/images/taxi_logo_white.png")
 
 const mapStateToProps = state => ({
   logo: appLogo,
-  driverOnTheWay: true
+  driverOnTheWay: true,
+  appStillLoading: state.home.region == null
 })
 
 const mapDispatchToProps = {}

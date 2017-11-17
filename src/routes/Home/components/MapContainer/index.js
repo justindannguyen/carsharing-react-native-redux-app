@@ -10,7 +10,7 @@
 "use strict"
 
 import React from "react"
-import { Container, Content } from "native-base"
+import { Content } from "native-base"
 import MapView from "react-native-maps"
 import styles from "./styles"
 import { SearchBox } from "../SearchBox"
