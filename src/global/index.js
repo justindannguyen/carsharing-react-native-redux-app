@@ -7,13 +7,13 @@
  * @flow
  * @format
  */
-'use strict'
+"use strict"
 
-import { Toast } from 'native-base'
+import { Toast } from "native-base"
 
 function showToast(configs = {}) {
   configs.duration = 3
-  configs.buttonText = 'Got it!'
+  configs.buttonText = "Got it!"
   Toast.show(configs)
 }
 
@@ -23,7 +23,7 @@ function showToast(configs = {}) {
  * @param {string} message 
  */
 export function showSuccess(message) {
-  showToast({ type: 'success' })
+  showToast({ type: "success" })
 }
 
 /**
@@ -32,7 +32,7 @@ export function showSuccess(message) {
  * @param {string} message 
  */
 export function showWarning(message) {
-  showToast({ type: 'warning', text: message })
+  showToast({ type: "warning", text: message })
 }
 
 /**
@@ -41,5 +41,49 @@ export function showWarning(message) {
  * @param {string} message 
  */
 export function showError(message) {
-  showToast({ type: 'danger' })
+  showToast({ type: "danger" })
+}
+
+/**
+ * Compare if 2 map location is equals.
+ * 
+ * @param {*} mapLocation1 
+ * @param {*} mapLocation2 
+ */
+export function isLocationEquals(mapLocation1, mapLocation2) {
+  if (mapLocation1 == mapLocation2) {
+    return true
+  }
+  if (mapLocation1 == null || mapLocation2 == null) {
+    return false
+  }
+  return (
+    mapLocation1.latitude == mapLocation2.latitude &&
+    mapLocation1.longitude == mapLocation2.longitude
+  )
+}
+
+export function getRegionFromCoordinates(points) {
+  let minLat, maxLat, minLng, maxLng
+
+  points.filter(point => point != null).forEach(point => {
+    const lat = point.latitude
+    const lng = point.longitude
+    minLat = Math.min(minLat || lat, lat)
+    maxLat = Math.max(maxLat || lat, lat)
+    minLng = Math.min(minLng || lng, lng)
+    maxLng = Math.max(maxLng || lng, lng)
+  })
+
+  const middleLat = (minLat + maxLat) / 2
+  const middleLong = (minLng + maxLng) / 2
+  const deltaLat = maxLat - minLat
+  const deltaLong = maxLng - minLng
+
+  return {
+    latitude: middleLat,
+    longitude: middleLong,
+    latitudeDelta: Math.max(0.04, deltaLat * 1.35),
+    longitudeDelta: Math.max(0.02, deltaLong * 1.35)
+  }
 }

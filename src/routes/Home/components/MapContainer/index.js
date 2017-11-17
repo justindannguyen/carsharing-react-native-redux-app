@@ -19,7 +19,7 @@ import { SearchBox } from "../SearchBox"
 export default class MapContainer extends Component {
   render() {
     const {
-      currentLocation,
+      mapRegion,
       setPickupLocation,
       pickupLocation,
       setDropLocation,
@@ -27,7 +27,7 @@ export default class MapContainer extends Component {
     } = this.props
     return (
       <Content contentContainerStyle={styles.container}>
-        <MapView provider={MapView.PROVIDER_GOOGLE} region={currentLocation} style={styles.map}>
+        <MapView provider={MapView.PROVIDER_GOOGLE} region={mapRegion} style={styles.map}>
           {pickupLocation ? <MapView.Marker coordinate={pickupLocation} pinColor="green" /> : null}
           {dropoffLocation ? (
             <MapView.Marker coordinate={dropoffLocation} pinColor="orangered" />
@@ -55,7 +55,7 @@ MapContainer.propTypes = {
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
   }),
-  currentLocation: PropTypes.shape({
+  mapRegion: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
     latitudeDelta: PropTypes.number.isRequired,

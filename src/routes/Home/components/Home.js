@@ -36,7 +36,7 @@ export default class Home extends Component {
   }
 
   render() {
-    return this.props.currentLocation ? this.renderHome() : this.renderLoading()
+    return this.props.mapRegion ? this.renderHome() : this.renderLoading()
   }
 }
 
@@ -52,7 +52,7 @@ Home.propTypes = {
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
   }),
-  currentLocation: PropTypes.shape({
+  mapRegion: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
     latitudeDelta: PropTypes.number.isRequired,

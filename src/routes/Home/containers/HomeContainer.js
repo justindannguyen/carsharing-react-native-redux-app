@@ -18,7 +18,7 @@ import {
 } from "../modules/HomeActions"
 
 const mapStateToProps = ({ home }) => ({
-  currentLocation: home.currentLocation,
+  mapRegion: home.mapRegion,
   pickupLocation: home.pickupLocation,
   dropoffLocation: home.dropoffLocation
 })
