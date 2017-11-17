@@ -58,7 +58,6 @@ export class SearchBox extends Component {
     return (
       <View style={styles.searchBox}>
         <View style={styles.inputWrapper}>
-          <Text style={styles.label}>PICK UP</Text>
           <InputGroup>
             <Icon name="search" size={15} color="green" />
             <Input
@@ -68,9 +67,6 @@ export class SearchBox extends Component {
               onFocus={this.choosePickupLocation}
             />
           </InputGroup>
-        </View>
-        <View style={styles.inputWrapper}>
-          <Text style={styles.label}>DROP OFF</Text>
           <InputGroup>
             <Icon name="search" size={15} color="orangered" />
             <Input

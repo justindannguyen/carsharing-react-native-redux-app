@@ -83,3 +83,8 @@ export function getCurrentLocation() {
     )
   }
 }
+
+export function bookTaxi() {
+  // TODO API call.
+  return dispatch => console.log("booked")
+}

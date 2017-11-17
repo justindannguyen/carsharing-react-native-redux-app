@@ -43,6 +43,7 @@ export default class Home extends Component {
 Home.propTypes = {
   getCurrentLocation: PropTypes.func.isRequired,
   setPickupLocation: PropTypes.func.isRequired,
+  bookTaxi: PropTypes.func.isRequired,
   pickupLocation: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired

@@ -15,6 +15,8 @@ import { Content } from "native-base"
 import MapView from "react-native-maps"
 import styles from "./styles"
 import { SearchBox } from "../SearchBox"
+import Booking from "../Booking"
+import { isLocationEquals } from "../../../../global"
 
 export default class MapContainer extends Component {
   render() {
@@ -23,8 +25,13 @@ export default class MapContainer extends Component {
       setPickupLocation,
       pickupLocation,
       setDropLocation,
-      dropoffLocation
+      dropoffLocation,
+      bookTaxi
     } = this.props
+    const bookingDisabled =
+      pickupLocation == null ||
+      dropoffLocation == null ||
+      isLocationEquals(pickupLocation, dropoffLocation)
     return (
       <Content contentContainerStyle={styles.container}>
         <MapView provider={MapView.PROVIDER_GOOGLE} region={mapRegion} style={styles.map}>
@@ -39,6 +46,7 @@ export default class MapContainer extends Component {
           setDropLocation={setDropLocation}
           dropoffLocation={dropoffLocation}
         />
+        <Booking bookingDisabled={bookingDisabled} bookTaxi={bookTaxi} />
       </Content>
     )
   }
@@ -46,6 +54,7 @@ export default class MapContainer extends Component {
 
 MapContainer.propTypes = {
   setPickupLocation: PropTypes.func.isRequired,
+  bookTaxi: PropTypes.func.isRequired,
   pickupLocation: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
