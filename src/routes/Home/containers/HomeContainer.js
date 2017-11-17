@@ -7,18 +7,18 @@
  * @flow
  * @format
  */
-'use strict'
+"use strict"
 
-import { connect } from 'react-redux'
-import Home from '../components/Home'
+import { connect } from "react-redux"
+import Home from "../components/Home"
 import {
   getCurrentLocation,
   setPickupLocationAction,
   setDropLocationAction
-} from '../modules/HomeActions'
+} from "../modules/HomeActions"
 
 const mapStateToProps = ({ home }) => ({
-  region: home.region,
+  currentLocation: home.currentLocation,
   pickupLocation: home.pickupLocation,
   dropoffLocation: home.dropoffLocation
 })

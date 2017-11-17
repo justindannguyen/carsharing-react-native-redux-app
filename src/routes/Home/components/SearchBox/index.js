@@ -7,16 +7,16 @@
  * @flow
  * @format
  */
-'use strict'
+"use strict"
 
-import React, { Component } from 'react'
-import { Text } from 'react-native'
-import { View, Input, InputGroup, Toast } from 'native-base'
-import styles from './styles'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import PropTypes from 'prop-types'
-import RNGooglePlaces from 'react-native-google-places'
-import { showError } from '../../../../global'
+import React, { Component } from "react"
+import { Text } from "react-native"
+import { View, Input, InputGroup, Toast } from "native-base"
+import styles from "./styles"
+import Icon from "react-native-vector-icons/FontAwesome"
+import PropTypes from "prop-types"
+import RNGooglePlaces from "react-native-google-places"
+import { showError } from "../../../../global"
 
 export class SearchBox extends Component {
   choosePickupLocation = () => {
@@ -48,8 +48,8 @@ export class SearchBox extends Component {
 
   getLocationDisplayText = location => {
     return location
-      ? location.name || location.address || `${location.latitude}-${location.longitude}`
-      : ''
+      ? location.name || location.address || `${location.latitude},${location.longitude}`
+      : ""
   }
 
   render() {
@@ -72,7 +72,7 @@ export class SearchBox extends Component {
         <View style={styles.inputWrapper}>
           <Text style={styles.label}>DROP OFF</Text>
           <InputGroup>
-            <Icon name="search" size={15} color="orange" />
+            <Icon name="search" size={15} color="orangered" />
             <Input
               style={styles.inputSearch}
               placeholder="Choose drop-off location"

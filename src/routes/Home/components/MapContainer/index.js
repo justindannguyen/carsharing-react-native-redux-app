@@ -9,27 +9,56 @@
  */
 "use strict"
 
-import React from "react"
+import React, { Component } from "react"
+import { PropTypes } from "prop-types"
 import { Content } from "native-base"
 import MapView from "react-native-maps"
 import styles from "./styles"
 import { SearchBox } from "../SearchBox"
 
-export const MapContainer = props => {
-  const { region, setPickupLocation, pickupLocation, setDropLocation, dropoffLocation } = props
-  return (
-    <Content contentContainerStyle={styles.container}>
-      <MapView provider={MapView.PROVIDER_GOOGLE} region={region} style={styles.map}>
-        <MapView.Marker coordinate={region} pinColor="orangered" />
-      </MapView>
-      <SearchBox
-        setPickupLocation={setPickupLocation}
-        pickupLocation={pickupLocation}
-        setDropLocation={setDropLocation}
-        dropoffLocation={dropoffLocation}
-      />
-    </Content>
-  )
+export default class MapContainer extends Component {
+  render() {
+    const {
+      currentLocation,
+      setPickupLocation,
+      pickupLocation,
+      setDropLocation,
+      dropoffLocation
+    } = this.props
+    return (
+      <Content contentContainerStyle={styles.container}>
+        <MapView provider={MapView.PROVIDER_GOOGLE} region={currentLocation} style={styles.map}>
+          {pickupLocation ? <MapView.Marker coordinate={pickupLocation} pinColor="green" /> : null}
+          {dropoffLocation ? (
+            <MapView.Marker coordinate={dropoffLocation} pinColor="orangered" />
+          ) : null}
+        </MapView>
+        <SearchBox
+          setPickupLocation={setPickupLocation}
+          pickupLocation={pickupLocation}
+          setDropLocation={setDropLocation}
+          dropoffLocation={dropoffLocation}
+        />
+      </Content>
+    )
+  }
 }
 
-export default MapContainer
+MapContainer.propTypes = {
+  setPickupLocation: PropTypes.func.isRequired,
+  pickupLocation: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
+  }),
+  setDropLocation: PropTypes.func.isRequired,
+  dropoffLocation: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
+  }),
+  currentLocation: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+    latitudeDelta: PropTypes.number.isRequired,
+    longitudeDelta: PropTypes.number.isRequired
+  })
+}

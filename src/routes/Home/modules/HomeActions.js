@@ -36,14 +36,26 @@ export function setDropLocationAction(location) {
   }
 }
 
+/**
+ * When current location is received, it also will be used as pickup location.
+ * 
+ * @param {any} position 
+ */
+function setCurrentLocation(position) {
+  return dispatch => {
+    dispatch(setCurrentLocationAction(position))
+    dispatch(setPickupLocationAction(position))
+  }
+}
+
 export function getCurrentLocation() {
   // Fallback coords at eTown2, Cong Hoa street.
   const fallbackCoords = { latitude: 10.8018791, longitude: 106.6391644 }
   const geoOptions = { timeout: 20000, enableHighAccuracy: false, maximumAge: 1000 }
   return dispatch => {
     navigator.geolocation.getCurrentPosition(
-      position => dispatch(setCurrentLocationAction(position)),
-      error => dispatch(setCurrentLocationAction(fallbackCoords)),
+      position => dispatch(setCurrentLocation(position.coords)),
+      error => dispatch(setCurrentLocation(fallbackCoords)),
       geoOptions
     )
   }

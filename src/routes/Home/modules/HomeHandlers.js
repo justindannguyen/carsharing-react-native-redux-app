@@ -47,15 +47,13 @@ function handleSetCurrentLocation(state, action) {
   const ratio = width / height
   const latitudeDelta = 0.0922
   const longitudeDelta = latitudeDelta * ratio
-  // Coords object from location services response or default coords as fallback
-  const coords = position.coords ? position.coords : position
   return update(state, {
-    region: {
+    currentLocation: {
       $set: {
         latitudeDelta,
         longitudeDelta,
-        longitude: coords.longitude,
-        latitude: coords.latitude
+        longitude: position.longitude,
+        latitude: position.latitude
       }
     }
   })
