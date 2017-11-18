@@ -1,17 +1,8 @@
 # Carsharing application using react-native and redux.
-## About
-[Justin](https://github.com/justindannguyen) are from Java background and he also knows little bit about:
-+ Dev native app with android.
-+ Dev single page webapp with reactjs or angular 4.
-+ Dev hybrid app with ionic + cordova native plugin.
-
-And he reads few comparision posts on internet about ionic vs react-native.
-But he wants to have his own feeling...
-
-## Screenshoot
+## About Taxi App
 Latest work as of now (Part 10), video is available at: [Youtube](https://youtu.be/8lS8dUDIQCc)
 
-Loading current location, timeout in 20s then use default location as fallback
+Test binary can be downloaded from [TaxiApp android](releases/taxi-app.apk)
 
 ![](docs/load_page.png "Latest work of Taxi App")
 ![](docs/home_page.png "Latest work of Taxi App")
