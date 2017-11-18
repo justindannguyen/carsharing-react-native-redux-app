@@ -11,9 +11,12 @@ But he wants to have his own feeling...
 ## Screenshoot
 Latest work as of now (Part 10).
 
-![](docs/load_page.jpeg "Latest work of Taxi App")
-![](docs/home_page_default.jpeg "Latest work of Taxi App")
-![](docs/home_page_fare.jpeg "Latest work of Taxi App")
+Loading current location, timeout in 20s then use default location as fallback
+
+![](docs/load_page.png "Latest work of Taxi App")
+![](docs/home_page.png "Latest work of Taxi App")
+![](docs/home_page_fare.png "Latest work of Taxi App")
+![](docs/find_driver_page.png "Latest work of Taxi App")
 
 ## Libraries
 Beside  ```react``` and ```react-native``` library, below are additional ones & their purposes
@@ -66,3 +69,36 @@ Steps guideline from [eman1000/TaxiApp](https://github.com/eman1000/TaxiApp)
 
 ## Known issues
 + Book button have to touch twice to trigger ```onPress```, why?
+
+## Common problems
+```
+Element type is invalid. Expected a string (For a built-in component) or a class/function
+```
+I got it resolved by change the import statement.
+```import { Name } from "module"``` to ```import Name from "module"```
+
+```
+Command `run-android` unrecognized. Make sure that you have run `npm install` and that you are inside a react-native project.
+```
+When execute ```react-native run-android```, you got above error. I got it resolved by execute ```yarn``` on root project folder.
+
+After add spinkit dependencies and ```react-native link```, Still compilation error related to ```react-native-spinkit``` class not found. Resolve it by adding into ```app/build.gradle```
+```
+dependencies {
+  compile project(':react-native-spinkit')
+  ...
+}
+``` 
+
+Problem related to redux stores when using hot reload, refer to [Structure difference](#structure)
+
+```
+Unable to resolve module <module name> from <path>...
+```
+If module is from our application then check your import statement if the path to module is correct.
+But if module is from library then ```npm install``` will resolve problem.
+
+```
+Build is failing due to unable to delete folder ...app\build\...
+```
+Manual delete ```build``` folder.
