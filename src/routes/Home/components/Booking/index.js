@@ -25,7 +25,7 @@ export default class Booking extends Component {
       style.backgroundColor = styles.disabledState.backgroundColor
     }
     return (
-      <Button style={style} onPress={this.onButtonPress} disabled={this.props.bookingDisabled}>
+      <Button style={style} disabled={this.props.bookingDisabled} onPress={this.onButtonPress}>
         <Label style={styles.text}>Book</Label>
       </Button>
     )

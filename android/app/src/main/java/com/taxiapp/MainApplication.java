@@ -3,6 +3,9 @@ package com.taxiapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.react.rnspinkit.RNSpinkitPackage;
+import com.react.rnspinkit.RNSpinkitPackage;
+import com.react.rnspinkit.RNSpinkitPackage;
 import com.arttitude360.reactnative.rngoogleplaces.RNGooglePlacesPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.airbnb.android.react.maps.MapsPackage;
@@ -26,6 +29,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSpinkitPackage(),
+            new RNSpinkitPackage(),
+            new RNSpinkitPackage(),
             new RNGooglePlacesPackage(),
             new VectorIconsPackage(),
             new MapsPackage()

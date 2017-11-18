@@ -11,7 +11,7 @@
 
 import React, { Component } from "react"
 import { View, Image, Text } from "react-native"
-import { Spinner } from "native-base"
+import Spinner from "react-native-spinkit"
 import styles from "./styles"
 
 const appLogo = require("../../../../assets/images/taxi_logo_white.png")
@@ -43,9 +43,15 @@ export default class LoadingIndicator extends Component {
     const message = loadingTakesLonger ? longLoadingMessage : standardMessage
     return (
       <View style={styles.container}>
-        <Image source={appLogo} style={styles.logo} />
-        <Spinner color="orangered" />
-        <Text>{message + messagePostfix}</Text>
+        <Image source={appLogo} />
+        <Spinner
+          style={styles.spinner}
+          isVisible
+          size={150}
+          type="WanderingCubes"
+          color="#FFFFFF"
+        />
+        <Text style={styles.text}>{message + messagePostfix}</Text>
       </View>
     )
   }

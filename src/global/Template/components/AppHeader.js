@@ -28,7 +28,7 @@ const styles = {
 export default class AppHeader extends Component {
   render() {
     // Loading content still visible and we do not want to have header during initiation time.
-    if (this.props.appStillLoading) return null
+    if (this.props.appStillLoading || this.props.bookingInProgress) return null
 
     return (
       <Header style={{ backgroundColor: "#FF5E3A" }}>
@@ -58,5 +58,6 @@ export default class AppHeader extends Component {
 AppHeader.propTypes = {
   logo: PropTypes.number.isRequired,
   driverOnTheWay: PropTypes.bool.isRequired,
-  appStillLoading: PropTypes.bool.isRequired
+  appStillLoading: PropTypes.bool.isRequired,
+  bookingInProgress: PropTypes.bool.isRequired
 }

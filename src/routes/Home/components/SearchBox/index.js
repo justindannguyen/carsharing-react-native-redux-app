@@ -85,11 +85,15 @@ export class SearchBox extends Component {
 SearchBox.propTypes = {
   setPickupLocation: PropTypes.func.isRequired,
   pickupLocation: PropTypes.shape({
+    name: PropTypes.string,
+    address: PropTypes.string,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
   }),
   setDropLocation: PropTypes.func.isRequired,
   dropoffLocation: PropTypes.shape({
+    name: PropTypes.string,
+    address: PropTypes.string,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
   })

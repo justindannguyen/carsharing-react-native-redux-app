@@ -18,10 +18,11 @@ const styles = {
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#FF5E3A"
   },
-  logo: {
-    tintColor: "orangered"
+  text: {
+    color: "white"
   }
 }
 

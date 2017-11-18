@@ -55,15 +55,9 @@ export default class MapContainer extends Component {
 MapContainer.propTypes = {
   setPickupLocation: PropTypes.func.isRequired,
   bookTaxi: PropTypes.func.isRequired,
-  pickupLocation: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired
-  }),
+  pickupLocation: PropTypes.object,
   setDropLocation: PropTypes.func.isRequired,
-  dropoffLocation: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired
-  }),
+  dropoffLocation: PropTypes.object,
   mapRegion: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,

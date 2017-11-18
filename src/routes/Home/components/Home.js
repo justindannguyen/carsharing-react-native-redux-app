@@ -16,6 +16,7 @@ import MapContainer from "./MapContainer"
 import { Container } from "native-base"
 import AppFooter from "../../../global/Template/containers/AppFooterContainer"
 import LoadingIndicator from "./LoadingIndicator"
+import FindDriver from "./FindDriver"
 
 export default class Home extends Component {
   componentDidMount() {
@@ -35,28 +36,34 @@ export default class Home extends Component {
     return <LoadingIndicator />
   }
 
+  renderBookingRequest() {
+    return (
+      <FindDriver
+        bookingRecord={this.props.bookingRecord}
+        cancelBookingTaxi={this.props.cancelBookingTaxi}
+      />
+    )
+  }
+
   render() {
-    return this.props.mapRegion ? this.renderHome() : this.renderLoading()
+    if (this.props.bookingRecord) {
+      return this.renderBookingRequest()
+    }
+    if (this.props.mapRegion == null) {
+      return this.renderLoading()
+    }
+    return this.renderHome()
   }
 }
 
 Home.propTypes = {
   getCurrentLocation: PropTypes.func.isRequired,
   setPickupLocation: PropTypes.func.isRequired,
-  bookTaxi: PropTypes.func.isRequired,
-  pickupLocation: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired
-  }),
   setDropLocation: PropTypes.func.isRequired,
-  dropoffLocation: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired
-  }),
-  mapRegion: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired,
-    latitudeDelta: PropTypes.number.isRequired,
-    longitudeDelta: PropTypes.number.isRequired
-  })
+  bookTaxi: PropTypes.func.isRequired,
+  cancelBookingTaxi: PropTypes.func.isRequired,
+  pickupLocation: PropTypes.object,
+  dropoffLocation: PropTypes.object,
+  mapRegion: PropTypes.object,
+  bookingRecord: PropTypes.object
 }

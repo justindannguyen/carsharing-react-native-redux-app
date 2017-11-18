@@ -14,6 +14,7 @@ import { urls } from "../../../global/urls"
 export const SET_PICK_UP_LOCATION = "SET_PICK_UP_LOCATION"
 export const SET_DROP_OFF_LOCATION = "SET_DROP_OFF_LOCATION"
 export const SET_FARE_STRUCTURE = "SET_FARE_STRUCTURE"
+export const BOOK_TAXI_REQUEST = "BOOK_TAXI_REQUEST"
 
 function setPickupLocationAction(location) {
   return {
@@ -33,6 +34,13 @@ function setFareStructureAction(fare) {
   return {
     type: SET_FARE_STRUCTURE,
     payload: fare
+  }
+}
+
+function bookTaxiRequestAction(bookingInfo) {
+  return {
+    type: BOOK_TAXI_REQUEST,
+    payload: bookingInfo
   }
 }
 
@@ -86,5 +94,20 @@ export function getCurrentLocation() {
 
 export function bookTaxi() {
   // TODO API call.
-  return dispatch => console.log("booked")
+  return (dispatch, getState) => {
+    const state = getState()
+    dispatch(
+      bookTaxiRequestAction({
+        pickupLocation: state.home.pickupLocation,
+        dropoffLocation: state.home.dropoffLocation,
+        status: "pending",
+        taxiType: state.template.selectedTaxiType
+      })
+    )
+  }
+}
+
+export function cancelBookingTaxi() {
+  // TODO API call.
+  return dispatch => dispatch(bookTaxiRequestAction(null))
 }

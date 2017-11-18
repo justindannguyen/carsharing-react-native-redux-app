@@ -15,20 +15,23 @@ import {
   getCurrentLocation,
   setPickupLocation,
   setDropLocation,
-  bookTaxi
+  bookTaxi,
+  cancelBookingTaxi
 } from "../modules/HomeActions"
 
 const mapStateToProps = ({ home }) => ({
   mapRegion: home.mapRegion,
   pickupLocation: home.pickupLocation,
-  dropoffLocation: home.dropoffLocation
+  dropoffLocation: home.dropoffLocation,
+  bookingRecord: home.bookingRecord
 })
 
 const mapDispatchToProps = {
   getCurrentLocation,
   setPickupLocation,
   setDropLocation,
-  bookTaxi
+  bookTaxi,
+  cancelBookingTaxi
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
