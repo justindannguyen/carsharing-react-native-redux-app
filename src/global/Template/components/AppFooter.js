@@ -15,6 +15,7 @@ import { Text } from "react-native"
 import { Footer, FooterTab, Button } from "native-base"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { isFareStructureEquals } from "../../../global"
+import { taxiTypes } from "../../../global"
 
 const styles = {
   footerContainer: {
@@ -27,48 +28,22 @@ const styles = {
     fontSize: 6
   }
 }
-//tab bar items
-const taxiTypes = [
-  {
-    type: "TaxiCar",
-    title: "4 wheelers",
-    icon: "car",
-    pricePerKm: 0.1, // $0.1 per km
-    standardDurationPerKm: 12 // 0.5 minute per km
-  },
-  {
-    type: "TaxiShare",
-    title: "7 wheelers",
-    icon: "car-estate",
-    pricePerKm: 0.07,
-    standardDurationPerKm: 14
-  },
-  {
-    type: "Premium",
-    title: "BMW, Mec, etc",
-    icon: "car-sports",
-    pricePerKm: 0.2,
-    standardDurationPerKm: 12
-  },
-  {
-    type: "TaxiBike",
-    title: "2 wheelers",
-    icon: "motorbike",
-    pricePerKm: 0.04,
-    standardDurationPerKm: 12
-  }
-]
+
 export default class AppFooter extends Component {
   onTaxiTypeSelected = taxiType => {
-    if (taxiType !== this.props.selectedTaxiType) {
+    if (taxiType.type !== this.props.selectedTaxiType.type) {
       this.props.setSelectedTaxiType(taxiType)
     }
+  }
+
+  componentDidMount() {
+    this.props.setSelectedTaxiType(taxiTypes[0])
   }
 
   formatTabElement(tabInfo, style = {}) {
     // Clone the styles so that customization will not impacted to template
     const elementStyle = { ...style }
-    const tabIsActive = this.props.selectedTaxiType === tabInfo.type
+    const tabIsActive = this.props.selectedTaxiType === tabInfo
     elementStyle.color = tabIsActive ? "#FF5E3A" : "grey"
 
     return elementStyle
@@ -79,7 +54,7 @@ export default class AppFooter extends Component {
     // are there anyway to pass arguments via onPress event?
     const subTitle = tabInfo.pricing ? `$${tabInfo.pricing}` : tabInfo.title
     return (
-      <Button vertical key={tabInfo.type} onPress={() => this.onTaxiTypeSelected(tabInfo.type)}>
+      <Button vertical key={tabInfo.type} onPress={() => this.onTaxiTypeSelected(tabInfo)}>
         <Icon size={25} name={tabInfo.icon} style={this.formatTabElement(tabInfo)} />
         <Text style={this.formatTabElement(tabInfo, styles.type)}>{tabInfo.type}</Text>
         <Text style={this.formatTabElement(tabInfo, styles.title)}>{subTitle}</Text>
@@ -115,7 +90,7 @@ export default class AppFooter extends Component {
 
 AppFooter.propTypes = {
   setSelectedTaxiType: PropTypes.func.isRequired,
-  selectedTaxiType: PropTypes.string.isRequired,
+  selectedTaxiType: PropTypes.object,
   fareStructure: PropTypes.shape({
     distance: PropTypes.shape({
       value: PropTypes.number.isRequired

@@ -19,11 +19,13 @@ import {
   cancelBookingTaxi
 } from "../modules/HomeActions"
 
-const mapStateToProps = ({ home }) => ({
-  mapRegion: home.mapRegion,
-  pickupLocation: home.pickupLocation,
-  dropoffLocation: home.dropoffLocation,
-  bookingRecord: home.bookingRecord
+const mapStateToProps = state => ({
+  mapRegion: state.home.mapRegion,
+  pickupLocation: state.home.pickupLocation,
+  dropoffLocation: state.home.dropoffLocation,
+  bookingRecord: state.home.bookingRecord,
+  drivers: state.home.drivers,
+  taxiType: state.template.selectedTaxiType
 })
 
 const mapDispatchToProps = {

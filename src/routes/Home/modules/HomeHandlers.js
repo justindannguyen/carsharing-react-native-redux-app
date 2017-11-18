@@ -16,7 +16,7 @@ import {
   SET_FARE_STRUCTURE,
   BOOK_TAXI_REQUEST
 } from "./HomeActions"
-import { getRegionFromCoordinates } from "../../../global"
+import { getRegionFromCoordinates, taxiTypes } from "../../../global"
 
 export const actionHandlers = {
   SET_PICK_UP_LOCATION: handleSetPickupLocation,
@@ -28,12 +28,30 @@ export const actionHandlers = {
 function handleSetPickupLocation(state, action) {
   const pickupLocation = action.payload
   const dropoffLocation = state.dropoffLocation
+
+  // As we will not integrate with any server so ,
+  // just random some drivers when users set pickup
+  const randomDriverCount = Math.round(Math.random() * 20)
+  const drivers = []
+  for (let i = 0; i < randomDriverCount; i++) {
+    const randomTaxiType = Math.round(Math.random() * 1000) % taxiTypes.length
+    drivers.push({
+      id: i,
+      taxiType: taxiTypes[randomTaxiType].type,
+      latitude: pickupLocation.latitude + (Math.random() - Math.random()) / 50,
+      longitude: pickupLocation.longitude + (Math.random() - Math.random()) / 50
+    })
+  }
+
   return update(state, {
     pickupLocation: {
       $set: pickupLocation
     },
     mapRegion: {
       $set: getRegionFromCoordinates([pickupLocation, dropoffLocation])
+    },
+    drivers: {
+      $set: drivers
     }
   })
 }

@@ -27,7 +27,9 @@ export default class FindDriver extends Component {
     return (
       <View style={styles.findDriverContainer}>
         <View style={styles.contentTop}>
-          <Label style={styles.text}>Connecting with nearby {bookingRecord.taxiType} drivers</Label>
+          <Label style={styles.text}>
+            Connecting with nearby {bookingRecord.taxiType.type} drivers
+          </Label>
           <Icon style={styles.locationIcon} name="map-marker" />
           <Label style={styles.pickupText}>
             {this.getLocationAsName(bookingRecord.pickupLocation)}
@@ -67,6 +69,8 @@ FindDriver.propTypes = {
       longitude: PropTypes.number.isRequired
     }),
     status: PropTypes.string.isRequired,
-    taxiType: PropTypes.string.isRequired
+    taxiType: PropTypes.shape({
+      type: PropTypes.string.isRequired
+    }).isRequired
   }).isRequired
 }

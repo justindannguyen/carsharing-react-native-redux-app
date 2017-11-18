@@ -9,7 +9,7 @@ And he reads few comparision posts on internet about ionic vs react-native.
 But he wants to have his own feeling...
 
 ## Screenshoot
-Latest work as of now (Part 8).
+Latest work as of now (Part 10).
 
 ![](docs/load_page.jpeg "Latest work of Taxi App")
 ![](docs/home_page_default.jpeg "Latest work of Taxi App")
@@ -54,8 +54,15 @@ Steps guideline from [eman1000/TaxiApp](https://github.com/eman1000/TaxiApp)
 + Taxi types e.g. Premium, Share, Car, Bike can be selectable, refer [Footer](src/global/Template/components/AppFooter.js)
 + Use ```native-base``` layout e.g. Header, Content, Footer combination.
 + Initial, current location will be used as pickup location.
-+ Fare calculation formula & display for all Taxi 
++ Fare calculation formula & display for all Taxi.
++ No server or socket.io implementation.
 
 ## TODO list
 + Place picker will be shown when When pickup (or dropoff) text box are firing focus event. Hence, dropoff picker will not display again when text box is in focus state and you want to change the place. Workaround is un-focus the text box first.
-+ Customize the place picker of ```react-native-google-places``` to align with themes
++ Customize the place picker of ```react-native-google-places``` to align with themes.
++ Server implementation for booking request & drivers tracking.
++ Driver application.
++ iOS test.
+
+## Known issues
++ Book button have to touch twice to trigger ```onPress```, why?
