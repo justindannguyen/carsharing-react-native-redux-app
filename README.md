@@ -9,7 +9,7 @@ And he reads few comparision posts on internet about ionic vs react-native.
 But he wants to have his own feeling...
 
 ## Screenshoot
-Latest work as of now (Part 10).
+Latest work as of now (Part 10), video is available at: [Youtube](https://youtu.be/8lS8dUDIQCc)
 
 Loading current location, timeout in 20s then use default location as fallback
 
