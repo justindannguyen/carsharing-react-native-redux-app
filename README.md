@@ -9,8 +9,9 @@ Test binary can be downloaded from [TaxiApp android](releases/taxi-app.apk)
 ![](docs/home_page_fare.png "Latest work of Taxi App")
 ![](docs/find_driver_page.png "Latest work of Taxi App")
 
-## Libraries
-Beside  ```react``` and ```react-native``` library, below are additional ones & their purposes
+## Libraries Stack
+### Production
+Beside  ```react``` and ```react-native``` libraries as default, below are additional ones & their purposes
 + [Redux](https://redux.js.org/): Typical state container (storages) for your react application.
   + [Redux Thunk](https://github.com/gaearon/redux-thunk) Async execution for redux (as middleware). 
     + [Redux Saga](https://github.com/redux-saga/redux-saga) maybe the better alternatives to avoid callback chains.
@@ -21,6 +22,13 @@ Beside  ```react``` and ```react-native``` library, below are additional ones & 
 + [SVG Icons](https://github.com/oblador/react-native-vector-icons) Beside icons from ```native-base```, ```react-native-vector-icons``` provide much more options.
 + [Map](https://github.com/airbnb/react-native-maps) Provide map component for react native, both Android + iOS platform.
 + [Google Places API](https://github.com/tolu360/react-native-google-places) library to use google place API in react-native.
++ [Spinkit](https://github.com/maxs15/react-native-spinkit) For the cool spin components.
++ [Redux state update](https://github.com/kolodny/immutability-helper) Helper to provide mutability of states (predictable)
+
+### Development
++ [redux-logger](https://github.com/evgenyrodionov/redux-logger) Redux middleware to log all state changes.
++ [flow-bin](https://github.com/facebook/flow) Static typechecker for JavaScript
++ [Story Book](https://storybook.js.org/) Component style preview.
 
 ## References
 Steps guideline from [eman1000/TaxiApp](https://github.com/eman1000/TaxiApp)
@@ -67,12 +75,12 @@ Element type is invalid. Expected a string (For a built-in component) or a class
 ```
 I got it resolved by change the import statement.
 ```import { Name } from "module"``` to ```import Name from "module"```
-
+***
 ```
 Command `run-android` unrecognized. Make sure that you have run `npm install` and that you are inside a react-native project.
 ```
 When execute ```react-native run-android```, you got above error. I got it resolved by execute ```yarn``` on root project folder.
-
+***
 After add spinkit dependencies and ```react-native link```, Still compilation error related to ```react-native-spinkit``` class not found. Resolve it by adding into ```app/build.gradle```
 ```
 dependencies {
@@ -80,16 +88,31 @@ dependencies {
   ...
 }
 ``` 
-
+***
 Problem related to redux stores when using hot reload, refer to [Structure difference](#structure)
-
+***
 ```
 Unable to resolve module <module name> from <path>...
 ```
 If module is from our application then check your import statement if the path to module is correct.
 But if module is from library then ```npm install``` will resolve problem.
-
+***
+Close your package bundler server when got following message, if it does not work then manual delete ```build``` folder.
 ```
-Build is failing due to unable to delete folder ...app\build\...
+* What went wrong:
+Execution failed for task ':app:processDebugResources'.
+> java.io.IOException: Could not delete path 
 ```
-Manual delete ```build``` folder.
+***
+Because we added debug, release buildTypes which are differenciate by ```applicationIdSuffix``` so application will not be launched automatically when running ```react-native run-android```.
+Following error will occured at the end of build.
+```
+BUILD SUCCESSFUL
+...
+Error type 3
+Error: Activity class {com.fireevacuation/com.fireevacuation.MainActivity} does not exist.
+```
+Run with ```--appIdSuffix``` parameter will fix the issue.
+```
+react-native run-android --appIdSuffix debug
+```

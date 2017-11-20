@@ -1,10 +1,15 @@
 {
-  "name": "TaxiApp",
+  "name": "taxi-app",
   "version": "1.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justindannguyen/carsharing-react-native-redux-app.git"
+  },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "release": "cd android && gradlew assembleRelease && cd.."
   },
   "dependencies": {
     "immutability-helper": "^2.5.0",
